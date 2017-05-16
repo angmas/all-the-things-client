@@ -18,7 +18,7 @@ const onAddItem = function (event) {
   console.log('onAddItem data: ', data)
 
   uploadsApi.addItem(data)
-    .then(console.log)
+    .then(onShowAllUploads)
     .catch(console.log)
 }
 
