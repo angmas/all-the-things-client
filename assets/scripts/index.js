@@ -6,7 +6,7 @@ const events = require('./uploads/events.js')
 
 $(() => {
   setAPIOrigin(location, config)
-  events.onShowHomePage()
+  events.onShowAllUploads()
 })
 
 // use require with a reference to bundle the file and use it in this file
