@@ -34,6 +34,13 @@ const onUpdateItem = function (event) {
     .catch(console.log)
 }
 
+const onSelectUpdate = function () {
+  event.preventDefault()
+  const id = $(this).attr('data-id')
+  console.log(id)
+  // need to add API SHOW call to gather data about a single upload
+}
+
 // onShowHomePage will build the home page view and attach the event listeners.
 // The code is here because events.js is driving all of the functionality
 // also, if the addHomePageHandlers were in ui.js, we would end up with
@@ -47,6 +54,7 @@ const addHomePageHandlers = function () {
   $('#add-item').on('submit', onAddItem)
   console.log('addHomePageHandlers function ran')
   $('#update-item').on('submit', onUpdateItem)
+  $('.glyphicon-pencil').on('click', onSelectUpdate)
 }
 
 module.exports = {
