@@ -3,18 +3,11 @@
 const ui = require('./ui.js')
 const uploadsApi = require('./api.js')
 
-// function to evoke the page view builder function in ui file
-const onShowHomePage = function () {
-  ui.showHomePage()
-  addHomePageHandlers()
-}
-
 // function to get data from backend in order to load the home page
 const onShowAllUploads = function () {
   console.log('on Show All Uploads Ran')
   uploadsApi.showAllUploads()
-    // .then(onShowHomePage)
-    .then(console.log)
+    .then(ui.showHomePage)
     .catch(console.log)
 }
 
@@ -23,6 +16,6 @@ const addHomePageHandlers = function () {
 }
 
 module.exports = {
-  onShowHomePage,
+
   onShowAllUploads
 }
