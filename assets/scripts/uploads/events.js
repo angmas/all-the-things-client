@@ -8,7 +8,7 @@ const onShowHomePage = function () {
   addHomePageHandlers()
 }
 
-const addHomePageHandlers = function (){
+const addHomePageHandlers = function () {
   console.log('addHomePageHandlers function ran')
 }
 
