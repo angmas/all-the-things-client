@@ -3,15 +3,15 @@
 const ui = require('./ui.js')
 
 // function to evoke the page view builder function in ui file
-const onShowLandingPage = function () {
-  ui.showLandingPage()
-  addLandingPageHandlers()
+const onShowHomePage = function () {
+  ui.showHomePage()
+  addHomePageHandlers()
 }
 
-const addLandingPageHandlers = function (){
-  console.log('addLandingPageHandlers function ran')
+const addHomePageHandlers = function (){
+  console.log('addHomePageHandlers function ran')
 }
 
 module.exports = {
-  onShowLandingPage
+  onShowHomePage
 }
