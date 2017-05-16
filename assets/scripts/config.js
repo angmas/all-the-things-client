@@ -2,7 +2,7 @@
 
 const config = {
   apiOrigins: {
-    production: 'https://ga-wdi-boston.herokuapp.com'
+    production: 'https://guarded-cliffs-28165.herokuapp.com/'
   }
 }
 
