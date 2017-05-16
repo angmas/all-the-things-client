@@ -7,11 +7,20 @@ const uploadsApi = require('./api.js')
 const onShowAllUploads = function () {
   console.log('on Show All Uploads Ran')
   uploadsApi.showAllUploads()
-    .then(ui.showHomePage)
+    .then(onShowHomePage)
     .catch(console.log)
 }
 
+// onShowHomePage will build the home page view and attach the event listeners.
+// The code is here because events.js is driving all of the functionality
+// also, if the addHomePageHandlers were in ui.js, we would end up with
+// circular required.
+const onShowHomePage = function (data) {
+  ui.showHomePage(data)
+  addHomePageHandlers()
+}
 const addHomePageHandlers = function () {
+  // $('#add-item').on('submit', onUpload)
   console.log('addHomePageHandlers function ran')
 }
 
