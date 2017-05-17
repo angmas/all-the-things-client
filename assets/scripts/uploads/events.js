@@ -6,6 +6,7 @@ const authApi = require('../auth/api.js')
 const authUi = require('../auth/ui')
 
 const getFormFields = require('../../../lib/get-form-fields')
+const store = require('../store')
 
 // USER AUTHENTICATION ACTIONS //
 const onSignUp = function (event) {
@@ -118,10 +119,14 @@ const onUserFolder = function (e) {
   const target = $(e.target)
   console.log(target.data('id'))
   const id = target.data('id')
+  console.log(target.text())
+  console.log(target.data('store'))
+  if (!target.data('store')) {
+    store.folder = target.text()
+  }
   uploadsApi.userFolders(id)
     .then(onShowHomePage)
     .catch(console.error)
-  // uploadsApi.userFolders()
 }
 
 const onDateFolder = function (e) {
@@ -146,6 +151,7 @@ const addHomePageHandlers = function () {
   $('#sign-out').on('submit', onSignOut)
   $('#change-password').on('submit', onChangePassword)
   $('.update-button').on('click', onUpdateUpload)
+  $('#show-users').on('click', onShowAllUploads)
 }
 
 module.exports = {
