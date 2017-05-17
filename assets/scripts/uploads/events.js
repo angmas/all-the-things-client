@@ -2,6 +2,7 @@
 
 const ui = require('./ui.js')
 const uploadsApi = require('./api.js')
+const authEvents = require('../auth/events.js')
 // const getFormFields = require('../../../lib/get-form-fields')
 
 // function to get data from backend in order to load the home page
@@ -29,6 +30,7 @@ const onAddItem = function (event) {
 const onShowHomePage = function (data) {
   ui.showHomePage(data)
   addHomePageHandlers()
+  authEvents.addHandlers()
 }
 const addHomePageHandlers = function () {
   $('#add-item').on('submit', onAddItem)
