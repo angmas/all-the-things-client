@@ -25,7 +25,7 @@ const updateItem = function (data, id) {
     url: config.apiOrigin + '/uploads/' + id,
     method: 'PATCH',
     headers: {
-      Authorization: 'Token token=fP6hXbPt28OGabLGIndXyWl4nAxnOfi2tUtQqE0Il1M=--qJUP0kCCgZn8ga16VmfVuotyudz7W45Jw0VwxCait/A='
+      // Authorization: 'Token token=fP6hXbPt28OGabLGIndXyWl4nAxnOfi2tUtQqE0Il1M=--qJUP0kCCgZn8ga16VmfVuotyudz7W45Jw0VwxCait/A='
       // Authorization: 'Token token=' + store.user.token
     },
     data
