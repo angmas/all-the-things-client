@@ -49,6 +49,14 @@ const onUpdateItem = function (event) {
     .catch(console.log)
 }
 
+const onDeleteUpload = function () {
+  const id = $(this).attr('data-id')
+  console.log('on Delete Upload ran', this)
+  uploadsApi.destroyItem(id)
+    .then(onShowAllUploads)
+    .catch(console.log)
+}
+
 // onShowHomePage will build the home page view and attach the event listeners.
 // The code is here because events.js is driving all of the functionality
 // also, if the addHomePageHandlers were in ui.js, we would end up with
@@ -67,6 +75,7 @@ const addHomePageHandlers = function () {
 const uploadHandlers = function () {
   // Click pencil to view update upload view
   $('.glyphicon-pencil').on('click', onUpdateUpload)
+  $('.delete-button').on('click', onDeleteUpload)
   $('#update-item').on('submit', onUpdateItem)
 }
 
