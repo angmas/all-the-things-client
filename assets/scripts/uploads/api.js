@@ -33,6 +33,31 @@ const showUploadedData = function (id) {
   })
 }
 
+const uploadOwners = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/uploadowners',
+    method: 'GET'
+  })
+}
+
+const userFolders = function (owner) {
+  return $.ajax({
+    url: config.apiOrigin + '/folders/' + owner,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+const folderDocuments = function (path, owner) {
+  return $.ajax({
+    url: config.apiOrigin + '/uploads/folder/' + path + '/' + owner,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
 const updateItem = function (id, data) {
   console.log('updateItem data ', data)
   console.log('updateItem id ', id)
@@ -61,5 +86,8 @@ module.exports = {
   addItem,
   showUploadedData,
   updateItem,
-  destroyItem
+  destroyItem,
+  uploadOwners,
+  userFolders,
+  folderDocuments
 }

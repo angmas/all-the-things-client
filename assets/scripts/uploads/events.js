@@ -46,7 +46,7 @@ const onChangePassword = function (event) {
 // function to get data from backend in order to load the home page
 const onShowAllUploads = function () {
   console.log('on Show All Uploads Ran')
-  uploadsApi.showAllUploads()
+  uploadsApi.uploadOwners()
     .then(onShowHomePage)
     .catch(console.log)
 }
@@ -114,17 +114,42 @@ const onShowHomePage = function (data) {
   addHomePageHandlers()
 }
 
+const onUserFolder = function (e) {
+  const target = $(e.target)
+  console.log(target.data('id'))
+  const id = target.data('id')
+  uploadsApi.userFolders(id)
+    .then(onShowHomePage)
+    .catch(console.error)
+  // uploadsApi.userFolders()
+}
+
+const onDateFolder = function (e) {
+  const target = $(e.target)
+  const id = target.data('id')
+  const path = target.text()
+  uploadsApi.folderDocuments(path, id)
+    .then(onShowHomePage)
+    .catch(console.error)
+}
+
 const addHomePageHandlers = function () {
-  console.log('addHomePageHandlers function ran')
+  // Click pencil to view update upload view
+  $('.glyphicon-pencil').on('click', onUpdateUpload)
+  $('.delete-button').on('click', onDeleteUpload)
+  $('#update-item').on('submit', onUpdateItem)
+  $('.user-folder').on('click', onUserFolder)
+  $('.folder').on('click', onDateFolder)
+  $('#user-view').on('click', onShowAllUploads)
+  $('#user-folders').on('click', onUserFolder)
   $('#add-item').on('submit', onAddItem)
   $('#sign-out').on('submit', onSignOut)
   $('#change-password').on('submit', onChangePassword)
   $('.update-button').on('click', onUpdateUpload)
-  $('.delete-button').on('click', onDeleteUpload)
-  $('#update-item').on('submit', onUpdateItem)
 }
 
 module.exports = {
   onShowLandingPage,
   onShowAllUploads
+  // uploadHandlers
 }

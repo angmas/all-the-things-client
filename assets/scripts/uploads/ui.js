@@ -5,10 +5,19 @@ const showLandingPageTemplate = require('../templates/landing-page.handlebars')
 
 // function to build the page view
 const showHomePage = function (data) {
-  console.log(data)
   $('.body-content').empty()
-  $('.body-content').append(showHomePageTemplate({uploads: data.uploads}))
   console.log('show home page function run')
+  console.log(data)
+  $('.body-content').append(showHomePageTemplate(
+    // set the different keys that are needed
+    // if the key doesnt exist in the data then it just wont be used
+    {
+      uploads: data.uploads,
+      users: data.users,
+      folders: data.folders,
+      user: data.user
+    }
+  ))
 }
 
 // function to build the landing page
