@@ -24,21 +24,29 @@ const onAddItem = function (event) {
     .catch(console.log)
 }
 
-const onUpdateItem = function (event) {
+// Show data about the upload in the update upload form
+const onUpdateUpload = function () {
   event.preventDefault()
-  const data = getFormFields(event.target)
-  console.log('onUpdateItem data: ', data)
-  const id = '591b5d7ca9b7e77d54605d90' // take this out when we have full functionality
-  uploadsApi.updateItem(data, id)
-    .then(onShowAllUploads)
+  // Select data-id from target row
+  const id = $(this).attr('data-id')
+  console.log('onUpdateUpload id', id)
+  console.log(this)
+  uploadsApi.showUploadedData(id)
+    .then(ui.fillUpdateUpload)
     .catch(console.log)
 }
 
-const onSelectUpdate = function () {
+const onUpdateItem = function (event) {
   event.preventDefault()
-  const id = $(this).attr('data-id')
+  let data = getFormFields(event.target)
+  console.log('onUpdateItem data: ', data)
+  // let id = $(this).attr('data-id')
+  console.log('onUpdateItem this ', this)
+  let id = $(this).attr('data-id')
   console.log(id)
-  // need to add API SHOW call to gather data about a single upload
+  uploadsApi.updateItem(id, data)
+    .then(onShowAllUploads)
+    .catch(console.log)
 }
 
 // onShowHomePage will build the home page view and attach the event listeners.
@@ -49,15 +57,21 @@ const onShowHomePage = function (data) {
   ui.showHomePage(data)
   addHomePageHandlers()
   authEvents.addHandlers()
+  uploadHandlers()
 }
 const addHomePageHandlers = function () {
   $('#add-item').on('submit', onAddItem)
   console.log('addHomePageHandlers function ran')
+}
+
+const uploadHandlers = function () {
+  // Click pencil to view update upload view
+  $('.glyphicon-pencil').on('click', onUpdateUpload)
   $('#update-item').on('submit', onUpdateItem)
-  $('.glyphicon-pencil').on('click', onSelectUpdate)
 }
 
 module.exports = {
-
-  onShowAllUploads
+  onShowAllUploads,
+  uploadHandlers
+  // onUpdateItem
 }

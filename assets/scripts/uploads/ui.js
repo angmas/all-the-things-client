@@ -10,6 +10,14 @@ const showHomePage = function (data) {
   console.log('show home page function run')
 }
 
+// function to fill the update upload form
+const fillUpdateUpload = function (data) {
+  console.log('fillUpdateUpload ', data)
+  $('#update-upload-title').val(data.upload.title)
+  $('#update-item').attr('data-id', data.upload.id)
+}
+
 module.exports = {
-  showHomePage
+  showHomePage,
+  fillUpdateUpload
 }

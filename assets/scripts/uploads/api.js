@@ -5,28 +5,42 @@ const store = require('../store')
 
 const showAllUploads = function () {
   return $.ajax({
-    url: 'http://localhost:4741/uploads',
+    url: config.apiOrigin + '/uploads',
     method: 'GET'
   })
 }
 
 const addItem = function (data) {
+  console.log('addItem ran')
   return $.ajax({
     url: config.apiOrigin + '/uploads',
+    dataType: 'json',
     method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
     data,
     contentType: false,
     processData: false
   })
 }
 
-const updateItem = function (data, id) {
+const showUploadedData = function (id) {
+  console.log('showUploadedData id ', id)
+  return $.ajax({
+    url: config.apiOrigin + '/uploads/' + id,
+    method: 'GET'
+  })
+}
+
+const updateItem = function (id, data) {
+  console.log('updateItem data ', data)
+  console.log('updateItem id ', id)
   return $.ajax({
     url: config.apiOrigin + '/uploads/' + id,
     method: 'PATCH',
     headers: {
-      // Authorization: 'Token token=fP6hXbPt28OGabLGIndXyWl4nAxnOfi2tUtQqE0Il1M=--qJUP0kCCgZn8ga16VmfVuotyudz7W45Jw0VwxCait/A='
-      // Authorization: 'Token token=' + store.user.token
+      Authorization: 'Token token=' + store.user.token
     },
     data
   })
@@ -35,5 +49,6 @@ const updateItem = function (data, id) {
 module.exports = {
   showAllUploads,
   addItem,
+  showUploadedData,
   updateItem
 }
