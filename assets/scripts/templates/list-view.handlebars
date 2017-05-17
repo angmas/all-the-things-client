@@ -15,11 +15,9 @@
     {{#each uploads as |upload|}}
     <tr>
       <td>{{upload.title}}</td>
-      <td><a href ="{{upload.url}}">{{upload.url}}</td>
+      <td><a target="_blank" href="{{upload.url}}">{{upload.url}}</td>
         <td>
-          <button type="button" class="btn btn-default">
-            <span class="glyphicon glyphicon-download" aria-hidden="true"></span>
-          </button>
+            <a href="{{upload.url}}" download class="btn btn-default glyphicon glyphicon-download" aria-hidden="true"></a>
         </td>
         {{#if upload.editable}}
       <td>
