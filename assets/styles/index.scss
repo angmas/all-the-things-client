@@ -3,6 +3,12 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import 'list';
 $blue: #1010df;
 
+.big-headers {
+  color: $blue;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 48px;
+}
+
 .navbar-header .navbar-brand {
   color: $blue;
   font-family: 'Quicksand', sans-serif;
