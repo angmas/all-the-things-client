@@ -7,7 +7,8 @@ const events = require('./uploads/events.js')
 
 $(() => {
   setAPIOrigin(location, config)
-  events.onShowAllUploads()
+  events.onShowLandingPage()
+  // events.onShowAllUploads()
 })
 
 // Bring in login events

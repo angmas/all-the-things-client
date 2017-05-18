@@ -1,12 +1,21 @@
 'use strict'
 
 const showHomePageTemplate = require('../templates/home-page.handlebars')
+const showLandingPageTemplate = require('../templates/landing-page.handlebars')
 
 // function to build the page view
 const showHomePage = function (data) {
   console.log(data)
   $('.body-content').empty()
   $('.body-content').append(showHomePageTemplate({uploads: data.uploads}))
+  console.log('show home page function run')
+}
+
+// function to build the landing page
+const showLandingPage = function () {
+  console.log('showLandingPage')
+  $('.body-content').empty()
+  $('.body-content').append(showLandingPageTemplate())
   console.log('show home page function run')
 }
 
@@ -19,5 +28,6 @@ const fillUpdateUpload = function (data) {
 
 module.exports = {
   showHomePage,
+  showLandingPage,
   fillUpdateUpload
 }
