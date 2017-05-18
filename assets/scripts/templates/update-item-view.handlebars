@@ -1,13 +1,25 @@
-<h2>Update Item View</h2>
-<div>
-  <form id="update-item" enctype="multipart/form-data">
-    <fieldset>
-      <legend>Update a File</legend>
-      <label>
-          Title
-          <input type="text" name="upload[title]" id="update-upload-title"  maxlength=140 required>
-      </label>
-      <input type="submit" name="submit" value="Update" id="submit-update-form-button">
-    </fieldset>
-  </form>
-</div>
+<form id="update-item">
+  <fieldset>
+    <div id="update-item-modal" class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>Update File <span class="extra-title muted"></span></h3>
+          </div>
+          <div class="modal-body form-horizontal">
+            <div class="control-group">
+              <label for="update_title" class="control-label">Title</label>
+              <div class="controls">
+                <input type="text" name="upload[title]" id="update-upload-title"  maxlength=140 required>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn close-update-modal" data-dismiss="modal" aria-hidden="true">Close</button>
+            <button type="submit" class="btn btn-primary" id="submit-update-form-button">Update</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</form>

@@ -96,6 +96,7 @@ const onUpdateUpload = function () {
   console.log(this)
   uploadsApi.showUploadedData(id)
     .then(uploadUi.fillUpdateUpload)
+    .then(onShowUpdateModal)
     .catch(console.log)
 }
 
@@ -108,6 +109,9 @@ const onUpdateItem = function (event) {
   console.log(id)
   uploadsApi.updateItem(id, data)
     .then(onFileUpdated)
+    .then(() => {
+      $('body').removeClass('modal-open')
+    })
     .catch(console.log)
 }
 
@@ -145,6 +149,7 @@ const addChangePasswordHandlers = function () {
   $('#change-password').on('submit', onChangePassword)
 }
 
+// Show modal where user can upload a file
 const onShowUploadModal = function () {
   console.log('onShowUploadModal')
   $('#add-item-modal').modal({ show: true })
@@ -152,6 +157,16 @@ const onShowUploadModal = function () {
 
 const onCloseUploadModal = function () {
   $('#add-item')[0].reset()
+}
+
+// Show modal where user can update the title of a file
+const onShowUpdateModal = function () {
+  console.log('onShowUpdateModal')
+  $('#update-item-modal').modal({ show: true })
+}
+
+const onCloseUpdateModal = function () {
+  $('#update-item')[0].reset()
 }
 
 const onShowSignOut = function () {
@@ -264,10 +279,7 @@ const isImage = (url) => {
 }
 
 const addHomePageHandlers = function () {
-  // Click pencil to view update upload view
-  $('.glyphicon-pencil').on('click', onUpdateUpload)
   $('.delete-button').on('click', onDeleteUpload)
-  $('#update-item').on('submit', onUpdateItem)
   $('.user-folder').on('click', onUserFolder)
   $('.folder').on('click', onDateFolder)
   $('#user-view').on('click', onShowAllUploads)
@@ -275,6 +287,8 @@ const addHomePageHandlers = function () {
   $('#add-item').on('submit', onAddItem)
   $('#sign-out').on('submit', onSignOut)
   $('.update-button').on('click', onUpdateUpload)
+  $('#update-item').on('submit', onUpdateItem)
+  $('.close-update-modal').on('click', onCloseUpdateModal)
   $('#show-users').on('click', onShowAllUploads)
   $('#change-pwd-option').on('click', onShowChangePasswordModal)
   $('#sign-out-option').on('click', onShowSignOut)
