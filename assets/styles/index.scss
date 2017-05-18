@@ -6,6 +6,15 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import 'list';
 $blue: #1010df;
 
+body {
+  // background-image: url('http://i.imgur.com/0fJCiL7.jpg');
+  // background-image: url('../images/all-the-things-template.jpg.png');
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  // background-position: center;
+  // background-attachment: fixed;
+}
+
 .big-headers {
   color: $blue;
   font-family: 'Quicksand', sans-serif;
