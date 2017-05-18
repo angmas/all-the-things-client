@@ -10,7 +10,7 @@
 <table class="table table-responsive" style="float:right">
 <thead class="thead-default">
   <tr>
-    <th></th>
+    <th>Preview</th>
     <th style="padding-left: 15px;">Name</th>
     <th>Created</th>
     <th>Updated</th>
@@ -19,13 +19,13 @@
   </thead>
   <tbody>
     {{#each uploads as |upload|}}
-    <tr class="clickable">
-
-      <td data-url="{{upload.url}}" class="file file-path clickable">
+    <tr style="height: 115px;" class="clickable">
+      <td style="text-align:center" data-url="{{upload.url}}" class="file file-path clickable">
         {{#if upload.isImage}}
-        <img src="{{upload.url}}" class="img-thumbnail" alt="{{upload.title}}" height=75 width=75>
+        <img src="{{upload.url}}" class="img-thumbnail" alt="{{upload.title}}"  >
         {{else}}
-      <img style="padding-bottom: 15px;" src="../../../assets/images/all-the-things-template.jpg.png" class="img-thumbnail" alt="{{upload.title}}" height=75 width=75>
+      <img style="padding-bottom: 15px;" src="../../../assets/images/all-the-things-template.jpg.png"
+      class="img-thumbnail" alt="{{upload.title}}">
         {{/if}}
       </td>
 
@@ -33,9 +33,9 @@
       <span>{{upload.title}}</span>
       </td>
 
-    <td data-url="{{upload.url}}" class="file-path clickable" style="color: black !important;">{{upload.createdAt}}</td>
+    <td data-url="{{upload.url}}" class="file-path date clickable">{{upload.createdAt}}</td>
 
-    <td data-url="{{upload.url}}" class="file-path clickable" style="color: black !important;">{{upload.updatedAt}}</td>
+    <td data-url="{{upload.url}}" class="file-path date clickable">{{upload.updatedAt}}</td>
 
         <td style="text-align:right;" class="file">
             <a href="{{upload.url}}" download class="btn btn-default" aria-hidden="true">
