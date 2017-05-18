@@ -64,6 +64,7 @@ const putCurrentUserFirst = (userArray) => {
   const currentUser = userArray.find(user => user.id === store.user.id)
   const index = userArray.indexOf(currentUser)
   if (index > -1) {
+    currentUser.isCurrentUserFolder = true
     userArray.splice(index, 1)
     userArray.unshift(currentUser)
   }
@@ -296,6 +297,7 @@ const addHomePageHandlers = function () {
   $('#add-upload-button').on('click', onShowUploadModal)
   $('.close-upload-modal').on('click', onCloseUploadModal)
   $('.file-path').on('click', onOpenFile)
+  $('[data-toggle="tooltip"]').tooltip()
 }
 
 module.exports = {
