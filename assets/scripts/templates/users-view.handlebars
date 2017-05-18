@@ -1,0 +1,19 @@
+<h2>List of Users</h2>
+All The Things
+<table class="table table-responsive" style="float:right">
+<thead class="thead-default">
+  <tr>
+    <th style= "text-align:left">User</th>
+  </tr>
+  </thead>
+  <tbody>
+    {{#each users as |user|}}
+    <tr data-id="{{user.id}}" class='user-folder clickable' data-folder="{{user.email}}">
+      <td>
+        <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
+      <span>{{user.email}}</span>
+    </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

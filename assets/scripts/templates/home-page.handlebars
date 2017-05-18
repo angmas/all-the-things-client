@@ -1,0 +1,13 @@
+<h2>placeholder for home page</h2>
+{{> nav-bar-view}}
+{{> add-item-view}}
+{{> update-item-view}}
+{{#if uploads}}
+  {{> list-view}}
+{{/if}}
+{{#if users}}
+  {{> users-view}}
+{{/if}}
+{{#if folders}}
+  {{> user-folder-list-view}}
+{{/if}}
