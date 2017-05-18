@@ -112,7 +112,7 @@ const addLandingPageHandlers = function () {
 // clicking the change password button in the nav bar triggers the modal
 const onShowChangePasswordModal = function () {
   console.log('onShowChangePassword')
-  $('#password-modal').modal({show:true})
+  $('#password-modal').modal({ show: true })
   $('.pass-success-message').hide()
   $('.old-password-mismatch-message').hide()
   addChangePasswordHandlers()
