@@ -1,13 +1,13 @@
 'use strict'
 
 const uploadUi = require('./ui.js')
-const uploadApi = require('./api.js')
+const uploadsApi = require('./api.js')
 const authApi = require('../auth/api.js')
 const authUi = require('../auth/ui')
 
 const getFormFields = require('../../../lib/get-form-fields')
 
-// USER AUTHENTICATION ACTIONS
+// USER AUTHENTICATION ACTIONS //
 const onSignUp = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
@@ -41,12 +41,12 @@ const onChangePassword = function (event) {
   .catch(authUi.changePasswordFail)
 }
 
-// UPLOAD CRUD ACTIONS
+// UPLOAD CRUD ACTIONS //
 
 // function to get data from backend in order to load the home page
 const onShowAllUploads = function () {
   console.log('on Show All Uploads Ran')
-  uploadApi.showAllUploads()
+  uploadsApi.showAllUploads()
     .then(onShowHomePage)
     .catch(console.log)
 }
@@ -56,7 +56,7 @@ const onAddItem = function (event) {
   const data = new FormData(event.target)
   console.log('onAddItem data: ', data)
 
-  uploadApi.addItem(data)
+  uploadsApi.addItem(data)
     .then(onShowAllUploads)
     .catch(console.log)
 }
@@ -68,7 +68,7 @@ const onUpdateUpload = function () {
   const id = $(this).attr('data-id')
   console.log('onUpdateUpload id', id)
   console.log(this)
-  uploadApi.showUploadedData(id)
+  uploadsApi.showUploadedData(id)
     .then(uploadUi.fillUpdateUpload)
     .catch(console.log)
 }
@@ -77,11 +77,10 @@ const onUpdateItem = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
   console.log('onUpdateItem data: ', data)
-  // let id = $(this).attr('data-id')
   console.log('onUpdateItem this ', this)
   const id = $(this).attr('data-id')
   console.log(id)
-  uploadApi.updateItem(id, data)
+  uploadsApi.updateItem(id, data)
     .then(onShowAllUploads)
     .catch(console.log)
 }
@@ -89,19 +88,21 @@ const onUpdateItem = function (event) {
 const onDeleteUpload = function () {
   const id = $(this).attr('data-id')
   console.log('on Delete Upload ran', this)
-  uploadApi.destroyItem(id)
+  uploadsApi.destroyItem(id)
     .then(onShowAllUploads)
     .catch(console.log)
 }
 
-// RENDER VIEW ACTIONS
+// RENDER VIEW ACTIONS //
 const onShowLandingPage = function () {
   console.log('onShowLandingPage')
   uploadUi.showLandingPage()
   addLandingPageHandlers()
-  // addHomePageHandlers()
-  // authEvents.addHandlers()
-  // uploadHandlers()
+}
+
+const addLandingPageHandlers = function () {
+  $('#sign-up').on('submit', onSignUp)
+  $('#sign-in').on('submit', onSignIn)
 }
 
 // onShowHomePage will build the home page view and attach the event listeners.
@@ -113,17 +114,12 @@ const onShowHomePage = function (data) {
   addHomePageHandlers()
 }
 
-const addLandingPageHandlers = function () {
-  $('#sign-up').on('submit', onSignUp)
-  $('#sign-in').on('submit', onSignIn)
-}
-
 const addHomePageHandlers = function () {
   console.log('addHomePageHandlers function ran')
   $('#add-item').on('submit', onAddItem)
   $('#sign-out').on('submit', onSignOut)
   $('#change-password').on('submit', onChangePassword)
-  $('.glyphicon-pencil').on('click', onUpdateUpload)
+  $('.update-button').on('click', onUpdateUpload)
   $('.delete-button').on('click', onDeleteUpload)
   $('#update-item').on('submit', onUpdateItem)
 }
