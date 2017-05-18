@@ -3,6 +3,7 @@
 const showHomePageTemplate = require('../templates/home-page.handlebars')
 const showLandingPageTemplate = require('../templates/landing-page.handlebars')
 const showChangePwdTemplate = require('../templates/change-password-view.handlebars')
+const showSignOutTemplate = require('../templates/sign-out-view.handlebars')
 const store = require('../store')
 
 // function to build the page view
@@ -48,9 +49,18 @@ const showChangePassword = function () {
   console.log('show change password function ran')
 }
 
+// function to show the sign out form
+const showSignOut = function () {
+  console.log('showSignOut')
+  $('.body-content').empty()
+  $('.body-content').append(showSignOutTemplate())
+  console.log('show sign out function ran')
+}
+
 module.exports = {
   showHomePage,
   showLandingPage,
   fillUpdateUpload,
   showChangePassword,
+  showSignOut
 }

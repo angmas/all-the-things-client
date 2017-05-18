@@ -31,6 +31,7 @@ const onSignOut = function (event) {
   const data = getFormFields(event.target)
   authApi.signOut(data)
   .then(authUi.signOutSuccess)
+  .then(onShowLandingPage)
   .catch(authUi.fail)
 }
 
@@ -116,6 +117,17 @@ const onShowChangePassword = function () {
 const addChangePasswordHandlers = function () {
   $('#change-password').on('submit', onChangePassword)
 }
+
+const onShowSignOut = function () {
+  console.log('onShowSignOut')
+  uploadUi.showSignOut()
+  addSignOutHandlers()
+}
+
+const addSignOutHandlers = function () {
+  $('#sign-out').on('submit', onSignOut)
+}
+
 // onShowHomePage will build the home page view and attach the event listeners.
 // The code is here because events.js is driving all of the functionality
 // also, if the addHomePageHandlers were in ui.js, we would end up with
@@ -160,6 +172,7 @@ const addHomePageHandlers = function () {
   $('.update-button').on('click', onUpdateUpload)
   $('#show-users').on('click', onShowAllUploads)
   $('#change-pwd-option').on('click', onShowChangePassword)
+  $('#sign-out-option').on('click', onShowSignOut)
 }
 
 module.exports = {
