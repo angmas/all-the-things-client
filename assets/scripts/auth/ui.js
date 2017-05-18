@@ -40,6 +40,7 @@ const changePasswordFail = (error) => {
   console.error('change pass', error)
   $('#change-password')[0].reset()
   $('.old-password-mismatch-message').show()
+  $('.pass-success-message').hide()
 }
 
 const failure = (error) => {
