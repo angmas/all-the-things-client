@@ -8,10 +8,11 @@ All The Things
   </thead>
   <tbody>
     {{#each users as |user|}}
-    <tr>
+    <tr data-id="{{user.id}}" class='user-folder clickable' data-folder="{{user.email}}">
       <td>
         <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
-      <a data-id="{{user.id}}" class='user-folder'>{{user.email}}</a></td>
+      <span>{{user.email}}</span>
+    </td>
     </tr>
     {{/each}}
   </tbody>

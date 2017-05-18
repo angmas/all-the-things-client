@@ -1,6 +1,6 @@
 <h2>User's Folders</h2>
 <a id="show-users" >All The Things</a>
-> {{user.email}}
+> <span id="current-folder">{{user.email}}</span>
 <table class="table table-responsive" style="float:right">
 <thead class="thead-default">
   <tr>
@@ -9,10 +9,10 @@
   </thead>
   <tbody>
     {{#each folders as |folder|}}
-    <tr>
+    <tr data-folder="{{folder}}" data-id="{{../user.id}}" class='folder clickable'>
       <td>
         <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
-      <a data-id="{{../user.id}}" class='folder'>{{folder}}</a></td>
+      <span>{{folder}}</span></td>
     </tr>
     {{/each}}
   </tbody>
