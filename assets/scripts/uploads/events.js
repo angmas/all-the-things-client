@@ -64,6 +64,7 @@ const putCurrentUserFirst = (userArray) => {
   const currentUser = userArray.find(user => user.id === store.user.id)
   const index = userArray.indexOf(currentUser)
   if (index > -1) {
+    currentUser.isCurrentUserFolder = true
     userArray.splice(index, 1)
     userArray.unshift(currentUser)
   }
@@ -251,10 +252,14 @@ const renderFolderDocuments = (path, id) => {
         upload.updatedAt = moment(upload.updatedAt).format('LLL')
         return upload
       })
+      data.uploads.sort((a, b) => dateSort(a.createdAt, b.createdAt))
       onShowHomePage(data)
     }
   })
   .catch(console.error)
+}
+const dateSort = (a, b) => {
+  return a < b
 }
 
 // function to clear out modals when close button is clicked
@@ -296,6 +301,7 @@ const addHomePageHandlers = function () {
   $('#add-upload-button').on('click', onShowUploadModal)
   $('.close-upload-modal').on('click', onCloseUploadModal)
   $('.file-path').on('click', onOpenFile)
+  $('[data-toggle="tooltip"]').tooltip()
 }
 
 module.exports = {
