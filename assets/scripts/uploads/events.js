@@ -1,10 +1,47 @@
 'use strict'
 
-const ui = require('./ui.js')
+const uploadUi = require('./ui.js')
 const uploadsApi = require('./api.js')
-const authEvents = require('../auth/events.js')
-// const getFormFields = require('../../../lib/get-form-fields')
+const authApi = require('../auth/api.js')
+const authUi = require('../auth/ui')
+
 const getFormFields = require('../../../lib/get-form-fields')
+
+// USER AUTHENTICATION ACTIONS //
+const onSignUp = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  authApi.signUp(data)
+  .then(authUi.successSignUp)
+  .catch(authUi.failureSignUp)
+}
+
+const onSignIn = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  authApi.signIn(data)
+  .then(authUi.signInSuccess)
+  .then(onShowAllUploads)
+  .catch(authUi.signInFail)
+}
+
+const onSignOut = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  authApi.signOut(data)
+  .then(authUi.signOutSuccess)
+  .catch(authUi.fail)
+}
+
+const onChangePassword = function (event) {
+  event.preventDefault()
+  const data = getFormFields(event.target)
+  authApi.changePassword(data)
+  .then(authUi.changePasswordSuccess)
+  .catch(authUi.changePasswordFail)
+}
+
+// UPLOAD CRUD ACTIONS //
 
 // function to get data from backend in order to load the home page
 const onShowAllUploads = function () {
@@ -32,17 +69,16 @@ const onUpdateUpload = function () {
   console.log('onUpdateUpload id', id)
   console.log(this)
   uploadsApi.showUploadedData(id)
-    .then(ui.fillUpdateUpload)
+    .then(uploadUi.fillUpdateUpload)
     .catch(console.log)
 }
 
 const onUpdateItem = function (event) {
   event.preventDefault()
-  let data = getFormFields(event.target)
+  const data = getFormFields(event.target)
   console.log('onUpdateItem data: ', data)
-  // let id = $(this).attr('data-id')
   console.log('onUpdateItem this ', this)
-  let id = $(this).attr('data-id')
+  const id = $(this).attr('data-id')
   console.log(id)
   uploadsApi.updateItem(id, data)
     .then(onShowAllUploads)
@@ -57,30 +93,38 @@ const onDeleteUpload = function () {
     .catch(console.log)
 }
 
+// RENDER VIEW ACTIONS //
+const onShowLandingPage = function () {
+  console.log('onShowLandingPage')
+  uploadUi.showLandingPage()
+  addLandingPageHandlers()
+}
+
+const addLandingPageHandlers = function () {
+  $('#sign-up').on('submit', onSignUp)
+  $('#sign-in').on('submit', onSignIn)
+}
+
 // onShowHomePage will build the home page view and attach the event listeners.
 // The code is here because events.js is driving all of the functionality
 // also, if the addHomePageHandlers were in ui.js, we would end up with
 // circular required.
 const onShowHomePage = function (data) {
-  ui.showHomePage(data)
+  uploadUi.showHomePage(data)
   addHomePageHandlers()
-  authEvents.addHandlers()
-  uploadHandlers()
-}
-const addHomePageHandlers = function () {
-  $('#add-item').on('submit', onAddItem)
-  console.log('addHomePageHandlers function ran')
 }
 
-const uploadHandlers = function () {
-  // Click pencil to view update upload view
-  $('.glyphicon-pencil').on('click', onUpdateUpload)
+const addHomePageHandlers = function () {
+  console.log('addHomePageHandlers function ran')
+  $('#add-item').on('submit', onAddItem)
+  $('#sign-out').on('submit', onSignOut)
+  $('#change-password').on('submit', onChangePassword)
+  $('.update-button').on('click', onUpdateUpload)
   $('.delete-button').on('click', onDeleteUpload)
   $('#update-item').on('submit', onUpdateItem)
 }
 
 module.exports = {
-  onShowAllUploads,
-  uploadHandlers
-  // onUpdateItem
+  onShowLandingPage,
+  onShowAllUploads
 }

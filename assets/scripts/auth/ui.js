@@ -15,6 +15,7 @@ const signInSuccess = (data) => {
   store.user = data.user
   console.log(store)
   $('#sign-in-response').text('Success! User has signed in.')
+  return
 }
 
 const signInFail = (error) => {
