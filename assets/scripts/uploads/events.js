@@ -39,6 +39,7 @@ const onChangePassword = function (event) {
   const data = getFormFields(event.target)
   authApi.changePassword(data)
   .then(authUi.changePasswordSuccess)
+  .then(onShowAllUploads)
   .catch(authUi.changePasswordFail)
 }
 
@@ -106,6 +107,15 @@ const addLandingPageHandlers = function () {
   $('#sign-in').on('submit', onSignIn)
 }
 
+const onShowChangePassword = function () {
+  console.log('onShowChangePassword')
+  uploadUi.showChangePassword()
+  addChangePasswordHandlers()
+}
+
+const addChangePasswordHandlers = function () {
+  $('#change-password').on('submit', onChangePassword)
+}
 // onShowHomePage will build the home page view and attach the event listeners.
 // The code is here because events.js is driving all of the functionality
 // also, if the addHomePageHandlers were in ui.js, we would end up with
@@ -147,9 +157,9 @@ const addHomePageHandlers = function () {
   $('#user-folders').on('click', onUserFolder)
   $('#add-item').on('submit', onAddItem)
   $('#sign-out').on('submit', onSignOut)
-  $('#change-password').on('submit', onChangePassword)
   $('.update-button').on('click', onUpdateUpload)
   $('#show-users').on('click', onShowAllUploads)
+  $('#change-pwd-option').on('click', onShowChangePassword)
 }
 
 module.exports = {
