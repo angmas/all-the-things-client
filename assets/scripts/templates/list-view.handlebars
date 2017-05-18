@@ -1,6 +1,6 @@
 <div class="table-container">
 <div class='breadcrumb'>
-<a id="show-users" >All The Things</a>
+<a id="show-users" >Home</a>
   <span class="glyphicon glyphicon-chevron-right"></span>
  <a id="user-folders" data-folder="{{folder}}" data-id="{{uploads.0._owner}}">{{folder}}</a>
  <span class="glyphicon glyphicon-chevron-right"></span>
@@ -10,7 +10,7 @@
 <table class="table table-responsive" style="float:right">
 <thead class="thead-default">
   <tr>
-    <th style="text-align:center">Preview</th>
+    <th>Preview</th>
     <th style="padding-left: 15px;">Name</th>
     <th>Created</th>
     <th>Updated</th>
@@ -19,7 +19,7 @@
   </thead>
   <tbody>
     {{#each uploads as |upload|}}
-    <tr style="height: 115px;" class="clickable">
+    <tr class="clickable">
       <td style="text-align:center" data-url="{{upload.url}}" class="file file-path clickable">
         {{#if upload.isImage}}
         <img src="{{upload.url}}" class="img-thumbnail" alt="{{upload.title}}"  >

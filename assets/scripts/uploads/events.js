@@ -252,10 +252,14 @@ const renderFolderDocuments = (path, id) => {
         upload.updatedAt = moment(upload.updatedAt).format('LLL')
         return upload
       })
+      data.uploads.sort((a, b) => dateSort(a.createdAt, b.createdAt))
       onShowHomePage(data)
     }
   })
   .catch(console.error)
+}
+const dateSort = (a, b) => {
+  return a < b
 }
 
 // function to clear out modals when close button is clicked
