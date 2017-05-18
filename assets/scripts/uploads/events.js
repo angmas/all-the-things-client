@@ -37,11 +37,11 @@ const onSignOut = function (event) {
 }
 
 const onChangePassword = function (event) {
+  console.log('change password ran')
   event.preventDefault()
   const data = getFormFields(event.target)
   authApi.changePassword(data)
   .then(authUi.changePasswordSuccess)
-  .then(onShowAllUploads)
   .catch(authUi.changePasswordFail)
 }
 
@@ -109,12 +109,16 @@ const addLandingPageHandlers = function () {
   $('#sign-in').on('submit', onSignIn)
 }
 
-const onShowChangePassword = function () {
+// clicking the change password button in the nav bar triggers the modal
+const onShowChangePasswordModal = function () {
   console.log('onShowChangePassword')
-  uploadUi.showChangePassword()
+  $('#password-modal').modal({show:true})
+  $('.pass-success-message').hide()
+  $('.old-password-mismatch-message').hide()
   addChangePasswordHandlers()
 }
 
+// adds handler to the submit button in the modal
 const addChangePasswordHandlers = function () {
   $('#change-password').on('submit', onChangePassword)
 }
@@ -199,6 +203,13 @@ const renderFolderDocuments = (path, id) => {
   .catch(console.error)
 }
 
+// function to clear out modals when close button is clicked
+const onClosePassModal = function () {
+  $('.pass-success-message').hide()
+  $('.old-password-mismatch-message').hide()
+  $('#change-password')[0].reset()
+}
+
 const addHomePageHandlers = function () {
   // Click pencil to view update upload view
   $('.glyphicon-pencil').on('click', onUpdateUpload)
@@ -212,8 +223,9 @@ const addHomePageHandlers = function () {
   $('#sign-out').on('submit', onSignOut)
   $('.update-button').on('click', onUpdateUpload)
   $('#show-users').on('click', onShowAllUploads)
-  $('#change-pwd-option').on('click', onShowChangePassword)
+  $('#change-pwd-option').on('click', onShowChangePasswordModal)
   $('#sign-out-option').on('click', onShowSignOut)
+  $('.cls-pass-modal').on('click', onClosePassModal)
 }
 
 module.exports = {
