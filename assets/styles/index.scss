@@ -43,4 +43,18 @@ $blue: #1010df;
 .add-upload {
   float: right;
   margin-top: 1em;
+  margin-right: 3em;
+}
+
+.jumbotron {
+  opacity: 0.92;
+  margin-top: 3em;
+  margin-bottom: 3em;
+  text-align: center;
+  // overflow: hidden;
+  position: relative;
+}
+
+.auth-login-form {
+  margin: .5em;
 }
