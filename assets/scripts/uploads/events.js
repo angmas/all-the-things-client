@@ -49,12 +49,31 @@ const onChangePassword = function (event) {
 
 // function to get data from backend in order to load the home page
 const onShowAllUploads = function () {
-  console.log('on Show All Uploads Ran')
   uploadsApi.uploadOwners()
-    .then(onShowHomePage)
+    .then(data => {
+      // sort users in alphabetical order by email
+      data.users.sort((a, b) => alphaSort(a.email, b.email))
+      // put the current user as the first item in the array
+      data.users = putCurrentUserFirst(data.users)
+      onShowHomePage(data)
+    })
     .catch(console.log)
 }
+// function to put current user first in the array
+const putCurrentUserFirst = (userArray) => {
+  const currentUser = userArray.find(user => user.id === store.user.id)
+  const index = userArray.indexOf(currentUser)
+  if (index > -1) {
+    userArray.splice(index, 1)
+    userArray.unshift(currentUser)
+  }
+  return userArray
+}
 
+// function to sort in alphabetical order ignoring case
+const alphaSort = (a, b) => {
+  return a.toLowerCase() > b.toLowerCase()
+}
 const onAddItem = function (event) {
   event.preventDefault()
   const data = new FormData(event.target)
@@ -164,7 +183,10 @@ const renderUserFolders = (target) => {
   const id = target.data('id')
   store.folder = folder
   uploadsApi.userFolders(id)
-    .then(onShowHomePage)
+    .then(data => {
+      data.folders.sort().reverse()
+      onShowHomePage(data)
+    })
     .catch(console.error)
 }
 const onDateFolder = function (e) {
@@ -198,7 +220,6 @@ const onFileDeleted = function (e) {
 }
 const renderFolderDocuments = (path, id) => {
   uploadsApi.folderDocuments(path, id).then((data) => {
-    console.log(data)
     // if the user has deleted all the files in a folder
     // just reload the whole list of users since it would be
     // difficult to figure out which view to load
@@ -206,6 +227,12 @@ const renderFolderDocuments = (path, id) => {
       onShowAllUploads()
       // if they still have files to show, just reload the list of files
     } else {
+      data.uploads = data.uploads.map(upload => {
+        upload.isImage = isImage(upload.url)
+        upload.createdAt = moment(upload.createdAt).format('LLL')
+        upload.updatedAt = moment(upload.updatedAt).format('LLL')
+        return upload
+      })
       onShowHomePage(data)
     }
   })
@@ -217,6 +244,20 @@ const onClosePassModal = function () {
   $('.pass-success-message').hide()
   $('.old-password-mismatch-message').hide()
   $('#change-password')[0].reset()
+}
+
+// open file in new window or tab
+const onOpenFile = (e) => {
+  const target = $(e.target)
+  const url = target.closest('td').data('url')
+  window.open(url, '_blank')
+}
+
+// check if the file is an image type
+const isImage = (url) => {
+  const imageTypes = ['png', 'jpg', 'jpeg']
+  const ext = url.split('.').pop().toLowerCase()
+  return imageTypes.indexOf(ext) !== -1
 }
 
 const addHomePageHandlers = function () {
@@ -237,6 +278,7 @@ const addHomePageHandlers = function () {
   $('.cls-pass-modal').on('click', onClosePassModal)
   $('#add-upload-button').on('click', onShowUploadModal)
   $('.close-upload-modal').on('click', onCloseUploadModal)
+  $('.file-path').on('click', onOpenFile)
 }
 
 module.exports = {

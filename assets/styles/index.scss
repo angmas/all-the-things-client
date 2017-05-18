@@ -1,5 +1,8 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import 'typography';
+@import 'colors';
 @import 'list';
 $blue: #1010df;
 

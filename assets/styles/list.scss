@@ -1,11 +1,63 @@
 tbody .clickable:hover {
-    color: #0070E0;
+  color: $clickable-text-color;
 }
 
 tr {
   font-size: 1.2em;
+  padding: 10px;
+
+  span {
+    padding: 10px;
+  }
+
+  .glyphicon-folder-close {
+    font-size: 1.5em;
+  }
+}
+
+.table-container {
+  display: table;
+  margin: 0 auto;
+  max-width: 1000px;
+  min-width: 85%;
+}
+
+.table-responsive {
+  border: 1px solid $border-color;
+}
+
+.img-thumbnail {
+  border: 0;
+}
+
+.user-folder,
+.folder {
+
+  td {
+    align-items: center;
+    display: flex;
+  }
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
 }
 
 .clickable {
   cursor: pointer;
+}
+
+.breadcrumb {
+  background-color: transparent;
+  font-size: 1.5em;
+  margin-top: 50px;
+
+  a {
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .glyphicon {
+    font-size: .8em;
+  }
 }
