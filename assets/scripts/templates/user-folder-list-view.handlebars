@@ -1,0 +1,19 @@
+<h2>User's Folders</h2>
+<a id="show-users" >All The Things</a>
+> {{user.email}}
+<table class="table table-responsive" style="float:right">
+<thead class="thead-default">
+  <tr>
+    <th  style= "text-align:left">Folder</th>
+  </tr>
+  </thead>
+  <tbody>
+    {{#each folders as |folder|}}
+    <tr>
+      <td>
+        <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
+      <a data-id="{{../user.id}}" class='folder'>{{folder}}</a></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

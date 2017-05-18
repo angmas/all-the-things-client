@@ -3,4 +3,12 @@
 {{> sign-out-view}}
 {{> add-item-view}}
 {{> update-item-view}}
-{{> list-view}}
+{{#if uploads}}
+  {{> list-view}}
+{{/if}}
+{{#if users}}
+  {{> users-view}}
+{{/if}}
+{{#if folders}}
+  {{> user-folder-list-view}}
+{{/if}}
