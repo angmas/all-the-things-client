@@ -9,10 +9,10 @@
   </thead>
   <tbody>
     {{#each folders as |folder|}}
-    <tr>
+    <tr data-folder="{{folder}}" data-id="{{../user.id}}" class='folder clickable'>
       <td>
         <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
-      <a data-id="{{../user.id}}" class='folder'>{{folder}}</a></td>
+      <span>{{folder}}</span></td>
     </tr>
     {{/each}}
   </tbody>

@@ -139,20 +139,25 @@ const onShowHomePage = function (data) {
 }
 
 const onUserFolder = function (e) {
+  const target = $(e.target).closest('tr')
+  renderUserFolders(target)
+}
+const onUserFolderBreadcrumb = (e) => {
   const target = $(e.target)
-  console.log(target.data('id'))
+  renderUserFolders(target)
+}
+const renderUserFolders = (target) => {
+  const folder = target.data('folder')
   const id = target.data('id')
-  console.log(target.text())
-  console.log(target.data('store'))
-  store.folder = target.text()
+  store.folder = folder
   uploadsApi.userFolders(id)
     .then(onShowHomePage)
     .catch(console.error)
 }
-
 const onDateFolder = function (e) {
-  const id = $(e.target).data('id')
-  const path = $(e.target).text()
+  const target = $(e.target).closest('tr')
+  const id = target.data('id')
+  const path = target.data('folder')
   renderFolderDocuments(path, id)
 }
 
@@ -202,7 +207,7 @@ const addHomePageHandlers = function () {
   $('.user-folder').on('click', onUserFolder)
   $('.folder').on('click', onDateFolder)
   $('#user-view').on('click', onShowAllUploads)
-  $('#user-folders').on('click', onUserFolder)
+  $('#user-folders').on('click', onUserFolderBreadcrumb)
   $('#add-item').on('submit', onAddItem)
   $('#sign-out').on('submit', onSignOut)
   $('.update-button').on('click', onUpdateUpload)
