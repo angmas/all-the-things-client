@@ -112,7 +112,7 @@ const addLandingPageHandlers = function () {
 // clicking the change password button in the nav bar triggers the modal
 const onShowChangePasswordModal = function () {
   console.log('onShowChangePassword')
-  $('#password-modal').modal({show:true})
+  $('#password-modal').modal({ show: true })
   $('.pass-success-message').hide()
   $('.old-password-mismatch-message').hide()
   addChangePasswordHandlers()
@@ -121,6 +121,15 @@ const onShowChangePasswordModal = function () {
 // adds handler to the submit button in the modal
 const addChangePasswordHandlers = function () {
   $('#change-password').on('submit', onChangePassword)
+}
+
+const onShowUploadModal = function () {
+  console.log('onShowUploadModal')
+  $('#add-item-modal').modal({ show: true })
+}
+
+const onCloseUploadModal = function () {
+  $('#add-item')[0].reset()
 }
 
 const onShowSignOut = function () {
@@ -226,6 +235,8 @@ const addHomePageHandlers = function () {
   $('#change-pwd-option').on('click', onShowChangePasswordModal)
   $('#sign-out-option').on('click', onShowSignOut)
   $('.cls-pass-modal').on('click', onClosePassModal)
+  $('#add-upload-button').on('click', onShowUploadModal)
+  $('.close-upload-modal').on('click', onCloseUploadModal)
 }
 
 module.exports = {

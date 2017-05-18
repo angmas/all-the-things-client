@@ -1,3 +1,60 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 @import 'list';
+$blue: #1010df;
+
+.big-headers {
+  color: $blue;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 48px;
+}
+
+.navbar-header .navbar-brand {
+  color: $blue;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 24px;
+  vertical-align: bottom;
+}
+
+.navbar-header {
+  float: none;
+}
+
+.navbar-toggle {
+  display: block;
+}
+
+.navbar-collapse.collapse {
+  display: none!important;
+}
+
+.navbar-collapse.collapse.in {
+  display: block!important;
+}
+
+.navbar-nav {
+  float: none!important;
+}
+
+.navbar-nav > li {
+  float: none;
+}
+
+.add-upload {
+  float: right;
+  margin-top: 1em;
+  margin-right: 3em;
+}
+
+.jumbotron {
+  opacity: 0.92;
+  margin-top: 3em;
+  margin-bottom: 3em;
+  text-align: center;
+  // overflow: hidden;
+  position: relative;
+}
+
+.auth-login-form {
+  margin: .5em;
+}
