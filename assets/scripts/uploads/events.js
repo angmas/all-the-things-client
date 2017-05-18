@@ -4,6 +4,7 @@ const uploadUi = require('./ui.js')
 const uploadsApi = require('./api.js')
 const authApi = require('../auth/api.js')
 const authUi = require('../auth/ui')
+const moment = require('moment')
 
 const getFormFields = require('../../../lib/get-form-fields')
 const store = require('../store')
@@ -60,7 +61,7 @@ const onAddItem = function (event) {
   console.log('onAddItem data: ', data)
 
   uploadsApi.addItem(data)
-    .then(onShowAllUploads)
+    .then(onFileUploaded)
     .catch(console.log)
 }
 
@@ -84,7 +85,7 @@ const onUpdateItem = function (event) {
   const id = $(this).attr('data-id')
   console.log(id)
   uploadsApi.updateItem(id, data)
-    .then(onShowAllUploads)
+    .then(onFileUpdated)
     .catch(console.log)
 }
 
@@ -92,7 +93,7 @@ const onDeleteUpload = function () {
   const id = $(this).attr('data-id')
   console.log('on Delete Upload ran', this)
   uploadsApi.destroyItem(id)
-    .then(onShowAllUploads)
+    .then(onFileDeleted)
     .catch(console.log)
 }
 
@@ -150,12 +151,47 @@ const onUserFolder = function (e) {
 }
 
 const onDateFolder = function (e) {
-  const target = $(e.target)
-  const id = target.data('id')
-  const path = target.text()
-  uploadsApi.folderDocuments(path, id)
-    .then(onShowHomePage)
-    .catch(console.error)
+  const id = $(e.target).data('id')
+  const path = $(e.target).text()
+  renderFolderDocuments(path, id)
+}
+
+const onFileUpdated = function (e) {
+  // when a file is updated, just reload the current folder view
+  const id = store.user.id
+  const path = $('#current-folder').text()
+  renderFolderDocuments(path, id)
+}
+const onFileUploaded = function (e) {
+  // make sure on upload we switch to the current user's view
+  // so they can see their upload
+  store.folder = store.user.email
+  const id = store.user.id
+  // also make sure we switch to the current date's folder
+  // since its a new upload, that is where it will display
+  const path = moment().format('MM-DD-YYYY')
+  renderFolderDocuments(path, id)
+}
+const onFileDeleted = function (e) {
+  // when a file is deleted, reload the view
+  const id = store.user.id
+  const path = $('#current-folder').text()
+  renderFolderDocuments(path, id)
+}
+const renderFolderDocuments = (path, id) => {
+  uploadsApi.folderDocuments(path, id).then((data) => {
+    console.log(data)
+    // if the user has deleted all the files in a folder
+    // just reload the whole list of users since it would be
+    // difficult to figure out which view to load
+    if (data.uploads.length === 0) {
+      onShowAllUploads()
+      // if they still have files to show, just reload the list of files
+    } else {
+      onShowHomePage(data)
+    }
+  })
+  .catch(console.error)
 }
 
 const addHomePageHandlers = function () {
