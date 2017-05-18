@@ -81,6 +81,9 @@ const onAddItem = function (event) {
 
   uploadsApi.addItem(data)
     .then(onFileUploaded)
+    .then(() => {
+      $('body').removeClass('modal-open')
+    })
     .catch(console.log)
 }
 
