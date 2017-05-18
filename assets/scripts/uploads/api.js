@@ -36,7 +36,10 @@ const showUploadedData = function (id) {
 const uploadOwners = function () {
   return $.ajax({
     url: config.apiOrigin + '/uploadowners',
-    method: 'GET'
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 

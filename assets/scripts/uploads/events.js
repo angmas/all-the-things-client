@@ -121,9 +121,7 @@ const onUserFolder = function (e) {
   const id = target.data('id')
   console.log(target.text())
   console.log(target.data('store'))
-  if (!target.data('store')) {
-    store.folder = target.text()
-  }
+  store.folder = target.text()
   uploadsApi.userFolders(id)
     .then(onShowHomePage)
     .catch(console.error)
