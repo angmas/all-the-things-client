@@ -57,7 +57,7 @@ const onShowAllUploads = function () {
       data.users = putCurrentUserFirst(data.users)
       onShowHomePage(data)
     })
-    .catch(console.log)
+    .catch()
 }
 // function to put current user first in the array
 const putCurrentUserFirst = (userArray) => {
@@ -78,14 +78,14 @@ const alphaSort = (a, b) => {
 const onAddItem = function (event) {
   event.preventDefault()
   const data = new FormData(event.target)
-  console.log('onAddItem data: ', data)
+  // console.log('onAddItem data: ', data)
 
   uploadsApi.addItem(data)
     .then(onFileUploaded)
     .then(() => {
       $('body').removeClass('modal-open')
     })
-    .catch(console.log)
+    .catch()
 }
 
 // Show data about the upload in the update upload form
@@ -93,40 +93,40 @@ const onUpdateUpload = function () {
   event.preventDefault()
   // Select data-id from target row
   const id = $(this).attr('data-id')
-  console.log('onUpdateUpload id', id)
-  console.log(this)
+  // console.log('onUpdateUpload id', id)
+  // console.log(this)
   uploadsApi.showUploadedData(id)
     .then(uploadUi.fillUpdateUpload)
     .then(onShowUpdateModal)
-    .catch(console.log)
+    .catch()
 }
 
 const onUpdateItem = function (event) {
   event.preventDefault()
   const data = getFormFields(event.target)
-  console.log('onUpdateItem data: ', data)
-  console.log('onUpdateItem this ', this)
+  // console.log('onUpdateItem data: ', data)
+  // console.log('onUpdateItem this ', this)
   const id = $(this).attr('data-id')
-  console.log(id)
+  // console.log(id)
   uploadsApi.updateItem(id, data)
     .then(onFileUpdated)
     .then(() => {
       $('body').removeClass('modal-open')
     })
-    .catch(console.log)
+    .catch()
 }
 
 const onDeleteUpload = function () {
   const id = $(this).attr('data-id')
-  console.log('on Delete Upload ran', this)
+  // console.log('on Delete Upload ran', this)
   uploadsApi.destroyItem(id)
     .then(onFileDeleted)
-    .catch(console.log)
+    .catch()
 }
 
 // RENDER VIEW ACTIONS //
 const onShowLandingPage = function () {
-  console.log('onShowLandingPage')
+  // console.log('onShowLandingPage')
   uploadUi.showLandingPage()
   addLandingPageHandlers()
 }
@@ -138,7 +138,7 @@ const addLandingPageHandlers = function () {
 
 // clicking the change password button in the nav bar triggers the modal
 const onShowChangePasswordModal = function () {
-  console.log('onShowChangePassword')
+  // console.log('onShowChangePassword')
   $('#password-modal').modal({ show: true })
   $('.pass-success-message').hide()
   $('.old-password-mismatch-message').hide()
@@ -152,7 +152,7 @@ const addChangePasswordHandlers = function () {
 
 // Show modal where user can upload a file
 const onShowUploadModal = function () {
-  console.log('onShowUploadModal')
+  // console.log('onShowUploadModal')
   $('#add-item-modal').modal({ show: true })
 }
 
@@ -162,7 +162,7 @@ const onCloseUploadModal = function () {
 
 // Show modal where user can update the title of a file
 const onShowUpdateModal = function () {
-  console.log('onShowUpdateModal')
+  // console.log('onShowUpdateModal')
   $('#update-item-modal').modal({ show: true })
 }
 
@@ -171,7 +171,7 @@ const onCloseUpdateModal = function () {
 }
 
 const onShowSignOut = function () {
-  console.log('onShowSignOut')
+  // console.log('onShowSignOut')
   uploadUi.showSignOut()
   addSignOutHandlers()
 }
@@ -206,7 +206,7 @@ const renderUserFolders = (target) => {
       data.folders.sort().reverse()
       onShowHomePage(data)
     })
-    .catch(console.error)
+    .catch()
 }
 const onDateFolder = function (e) {
   const target = $(e.target).closest('tr')
@@ -256,7 +256,7 @@ const renderFolderDocuments = (path, id) => {
       onShowHomePage(data)
     }
   })
-  .catch(console.error)
+  .catch()
 }
 const dateSort = (a, b) => {
   return a < b

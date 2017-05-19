@@ -11,7 +11,7 @@ const showAllUploads = function () {
 }
 
 const addItem = function (data) {
-  console.log('addItem ran')
+  // console.log('addItem ran')
   return $.ajax({
     url: config.apiOrigin + '/uploads',
     dataType: 'json',
@@ -26,7 +26,7 @@ const addItem = function (data) {
 }
 
 const showUploadedData = function (id) {
-  console.log('showUploadedData id ', id)
+  // console.log('showUploadedData id ', id)
   return $.ajax({
     url: config.apiOrigin + '/uploads/' + id,
     method: 'GET'
@@ -62,8 +62,8 @@ const folderDocuments = function (path, owner) {
   })
 }
 const updateItem = function (id, data) {
-  console.log('updateItem data ', data)
-  console.log('updateItem id ', id)
+  // console.log('updateItem data ', data)
+  // console.log('updateItem id ', id)
   return $.ajax({
     url: config.apiOrigin + '/uploads/' + id,
     method: 'PATCH',
