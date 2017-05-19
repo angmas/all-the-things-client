@@ -30,13 +30,17 @@ const signOutSuccess = () => {
 }
 
 const changePasswordSuccess = () => {
-  $('#change-pwd-inst').text('Password successfully changed!')
+  $('.old-password-mismatch-message').hide()
+  $('.pass-success-message').show()
+  $('#change-password')[0].reset()
   console.log('Password Successfully Changed.')
 }
 
 const changePasswordFail = (error) => {
-  console.error(error)
-  $('#change-pwd-inst').text('Wrong original password. Please try again.')
+  console.error('change pass', error)
+  $('#change-password')[0].reset()
+  $('.old-password-mismatch-message').show()
+  $('.pass-success-message').hide()
 }
 
 const failure = (error) => {

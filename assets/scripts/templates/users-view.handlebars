@@ -1,9 +1,18 @@
-<h2>List of Users</h2>
-All The Things
+<div class="table-container">
+<div class='breadcrumb'>
+Home
+</div>
 <table class="table table-responsive" style="float:right">
 <thead class="thead-default">
   <tr>
-    <th style= "text-align:left">User</th>
+    <th style= "text-align:left">
+      Users
+      {{#unless users.0.isCurrentUserFolder}}
+      <span data-placement="right" title="Looking for your folder? Upload a file to see it display."
+      data-toggle="tooltip" class="glyphicon glyphicon-question-sign"></span>
+      {{/unless}}
+    </th>
+
   </tr>
   </thead>
   <tbody>
@@ -11,9 +20,16 @@ All The Things
     <tr data-id="{{user.id}}" class='user-folder clickable' data-folder="{{user.email}}">
       <td>
         <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
-      <span>{{user.email}}</span>
+      <span>
+        {{user.email}}
+        {{#if user.isCurrentUserFolder}}
+        (you)
+        {{/if}}
+
+      </span>
     </td>
     </tr>
     {{/each}}
   </tbody>
 </table>
+</div>
