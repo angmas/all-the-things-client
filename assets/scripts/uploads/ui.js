@@ -8,10 +8,10 @@ const store = require('../store')
 // function to build the page view
 const showHomePage = function (data) {
   $('.body-content').empty()
-  console.log('show home page function run')
-  console.log(data)
+  // console.log('show home page function run')
+  // console.log(data)
   data.folder = store.folder || ''
-  console.log(data.folder)
+  // console.log(data.folder)
   $('.body-content').append(showHomePageTemplate(
     // set the different keys that are needed
     // if the key doesnt exist in the data then it just wont be used
@@ -27,25 +27,25 @@ const showHomePage = function (data) {
 
 // function to build the landing page
 const showLandingPage = function () {
-  console.log('showLandingPage')
+  // console.log('showLandingPage')
   $('.body-content').empty()
   $('.body-content').append(showLandingPageTemplate())
-  console.log('show home page function ran')
+  // console.log('show home page function ran')
 }
 
 // function to fill the update upload form
 const fillUpdateUpload = function (data) {
-  console.log('fillUpdateUpload ', data)
+  // console.log('fillUpdateUpload ', data)
   $('#update-upload-title').val(data.upload.title)
   $('#update-item').attr('data-id', data.upload.id)
 }
 
 // function to show the sign out form
 const showSignOut = function () {
-  console.log('showSignOut')
+  // console.log('showSignOut')
   $('.body-content').empty()
   $('.body-content').append(showSignOutTemplate())
-  console.log('show sign out function ran')
+  // console.log('show sign out function ran')
 }
 
 module.exports = {
