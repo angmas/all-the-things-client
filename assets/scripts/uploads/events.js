@@ -11,6 +11,7 @@ const store = require('../store')
 
 // USER AUTHENTICATION ACTIONS //
 const onSignUp = function (event) {
+  console.log('on Sign Up function ran')
   event.preventDefault()
   const data = getFormFields(event.target)
   authApi.signUp(data)
@@ -129,11 +130,13 @@ const onShowLandingPage = function () {
   console.log('onShowLandingPage')
   uploadUi.showLandingPage()
   addLandingPageHandlers()
+
 }
 
 const addLandingPageHandlers = function () {
-  $('#sign-up').on('submit', onSignUp)
-  $('#sign-in').on('submit', onSignIn)
+  $('#sign-up-button').on('click', onShowSignUpModal)
+  $('#sign-in-button').on('click', onShowSignInModal)
+  $('.cls-sign-up-modal').on('click', onCloseSignUpSignInModal)
 }
 
 // clicking the change password button in the nav bar triggers the modal
@@ -155,6 +158,33 @@ const onShowUploadModal = function () {
   console.log('onShowUploadModal')
   $('#add-item-modal').modal({ show: true })
 }
+
+const onShowSignUpModal = function () {
+  console.log('onShowSignUpModal ran')
+  $('#sign-up-modal').modal({ show: true })
+  $('.password-mismatch-message').hide()
+  $('.acct-success-message').hide()
+  addSignUpHandlers()
+}
+// adds handler to the submit button in the modal
+const addSignUpHandlers = function () {
+  console.log('add click handler to submit button')
+  $('#sign-up').on('submit', onSignUp)
+}
+
+const onShowSignInModal = function () {
+  console.log('onShowSignInModal ran')
+  $('#sign-in-modal').modal({ show: true })
+  $('#sign-up')[0].reset()
+  $('.password-mismatch-message').hide()
+  addSignInHandlers()
+}
+
+const addSignInHandlers = function (){
+  console.log('click handler to sign in submit button')
+  $('#sign-in').on('submit', onSignIn)
+}
+
 
 const onCloseUploadModal = function () {
   $('#add-item')[0].reset()
@@ -267,6 +297,13 @@ const onClosePassModal = function () {
   $('.pass-success-message').hide()
   $('.old-password-mismatch-message').hide()
   $('#change-password')[0].reset()
+}
+
+const onCloseSignUpSignInModal = function () {
+  $('#sign-up')[0].reset()
+  $('.password-mismatch-message').hide()
+  $('.acct-success-message').hide()
+  $('#sign-in')[0].reset()
 }
 
 // open file in new window or tab
