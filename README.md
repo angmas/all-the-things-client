@@ -65,7 +65,7 @@ from [`assets/styles/index.scss`](assets/styles/index.scss).
 * Developers should use [getFormFields](forms.md) to retrieve form data to send to
 an API unless it is multipart/form data which developers should then use the FormData interface.
 
-To deploy a browser-template based SPA, run `grunt deploy`.
+* To deploy a browser-template based SPA, run `grunt deploy`.
 
 ## Project Development Approach
 
@@ -91,14 +91,14 @@ Challenges: One of the most challenging parts of the project for me was adopting
 
 Favorite Part: I really liked working in a team and the pair programming. It was fun to learn from each other. During pairing, it was nice to be able to ask my partner questions without feeling like I was interrupting their work. I also liked being able to collaborate on design and talk through the requirements with a team.
 
-### Jim Moody
+### Jim
 
 Challenges: All of it.  Mostly just figuring out how the heck folders would work.  I never thought they would be so complicated.
 
 Favorite Part: Seeing how other people approach the same problem with different ideas that I would never have thought of.
 
 
-### Angela Mashlan
+### Angela
 
 Challenges: Not really understanding some of the requirements--like the requirement for `maintaining folder structures`. In the end, the team agreed on what *we* thought were the requirements, but until that point, I was worried.
 
