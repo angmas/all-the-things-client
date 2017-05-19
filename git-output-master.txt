@@ -1,0 +1,148 @@
+*   7f5ac8b (HEAD -> master, origin/master, origin/HEAD) Merge pull request #34 from femme-squad-plus-one/remove-change-pass-console
+|\  
+| * 9887867 (origin/remove-change-pass-console) Removes console.log from change password function
+|/  
+*   ca6fd2e Merge pull request #33 from femme-squad-plus-one/dev
+|\  
+| *   92b6c62 Merge pull request #32 from femme-squad-plus-one/comment-out-console-logs
+| |\  
+| | * df0f287 (origin/comment-out-console-logs) Removes console.logs from Uploads Ui file
+| | * 0a3ece3 Removes console.log from Upload events file
+| | * c60057a Removes console.logs from uploads api file
+| | * b253fcf Removes console.logs from auth ui file
+| |/  
+* |   74b5e09 Merge pull request #31 from femme-squad-plus-one/dev
+|\ \  
+| |/  
+| *   a94c55d Merge pull request #30 from femme-squad-plus-one/modify-styling
+| |\  
+| | * 0f1d4b1 (origin/modify-styling) Modified nav bar styling
+| |/  
+* |   229695b Merge pull request #29 from femme-squad-plus-one/dev
+|\ \  
+| |/  
+| *   bb8b21b Merge pull request #26 from femme-squad-plus-one/list-styling-cleanup
+| |\  
+| | * a1db149 (origin/list-styling-cleanup) Sort files by date (most recent first) and change the name of the home view
+| | * 155fa9b Update favicon and change name of users view header
+| | * a0af0d4 Add a tooltip for users that have no files uploaded
+| | * 0455743 Move some styling to sass file and set a max height on table rows
+| |/  
+| *   8a47dc7 Merge pull request #25 from femme-squad-plus-one/update-button
+| |\  
+| | * d90644e (origin/update-button) Commented out background CSS styling
+| | * 0d44de3 Refactor update view so that it appears in a modal
+| | * 18cdd88 Clears modal-open class after successful add item action
+| | * 484eac5 Added preliminary styling for background image
+| |/  
+| *   36f94ae Merge pull request #24 from femme-squad-plus-one/style-list
+| |\  
+| | * f12b450 Update rendering of views
+| | * 2a84e80 Add the created date and modified date to the table
+| | * e0bdc63 Add styles and fonts
+| | * 2d69047 Update document title
+| |/  
+| *   1c2a0a1 Merge pull request #23 from femme-squad-plus-one/add-button
+| |\  
+| | * 9890f28 (origin/add-button) Fix linter error
+| | * 2388b54 Float nav bar to the right
+| | * e1a1d85 Minor changes to sign-up styling
+| | * 21ad643 Styling modifications to sign-up handlebars
+| | * 6674cd7 Display add upload modal
+| | * 2ea6dae Add Upload Button
+| | * 517fff9 Resolve Issue #8
+| |/  
+| *   f28502a Merge pull request #21 from femme-squad-plus-one/change-password-modal
+| |\  
+| | * 51511ab (origin/change-password-modal) Adds hide pass success msg to change pass fail
+| | * 61efa82 Adds event to show password modal when change password btn is clicked
+| | * 456e9fc Refactors change password form to be a modal
+| | * eac21ce Adds user success/failure messaging to password success/fail
+| |/  
+| *   2469244 Merge pull request #20 from femme-squad-plus-one/images
+| |\  
+| | * a7fa5de (origin/images) Adds images folder with two all-the-things images
+| |/  
+* |   2301e3b Merge pull request #19 from femme-squad-plus-one/dev
+|\ \  
+| |/  
+| *   f4ac090 Merge pull request #18 from femme-squad-plus-one/view-rendering-on-crud
+| |\  
+| | * f921347 (origin/view-rendering-on-crud) Make each table row clickable when the view is of folders so the user can click on rows
+| | * a4bec0f Render the correct view based on user action
+| |/  
+| * 3dcd4cc Add max field length to title field
+| * a9cc27b Adds field validation to add item form and update item form
+| * 1f16482 Adds field validation to all auth fields
+| *   0ccb061 Merge pull request #16 from femme-squad-plus-one/chg-pw-sign-out
+| |\  
+| | * 41c6a40 (origin/chg-pw-sign-out) Added a navigation bar
+| | * 48ff88a Refactored flow to sign out page
+| | * e7e91fe Adds change password view to UI
+| | * 9dfdccb Refactored flow to access change password form
+| | * 00a757f Added nav bar across top of site
+| |/  
+| *   298a77d Merge pull request #14 from femme-squad-plus-one/folders
+| |\  
+| | * 8c5d2dd (origin/folders) Add authorization to the upload owners api call
+| | * c6233a7 Fix typo with style in the handlebars templates
+| | * a3090cb Fix bug with breadcrumb
+| | * 49f6f2c Fix bug with breadcrumb when user has only one file
+| | * 64d5b5f Make the file open in new window and add download link
+| | * 082dbe1 Add breadcrumb to folders view
+| | * 1360a6c Add api calls and event calls for getting folder information
+| | * 59dff3e Add a button to get back to the user’s folders
+| | * 226f3ad Add new handlebars templates and logic for showing
+| |/  
+| *   01c0a4f Merge pull request #15 from femme-squad-plus-one/refactor-auth
+| |\  
+| | * be12ec6 (origin/refactor-auth) Fixed Issue #12
+| | * 75209ac Refactored both user and upload events
+| | * 9ac5bae Commented out unnecessary heading and paragraph
+| |/  
+| *   b9c549f Merge pull request #11 from femme-squad-plus-one/delete-upload
+| |\  
+| | * da21eba (origin/delete-upload) Adds delete item functionality
+| | * 6aa64f2 Adds data-id to delete button in list-view.handlebars
+| |/  
+| *   17691f0 Merge pull request #6 from femme-squad-plus-one/update-view
+| |\  
+| | * 4ac00d9 Adds feature to update title of uploaded file
+| | * e77daf3 Commented out token
+| | * 56d3e25 Started building out update handlebar feature
+| | * 58ed1e1 Build out PATCH/UPDATE function
+| | * db504de Changed value of submit button
+| | * 85f93be Add update item view
+| |/  
+| *   83bd52e Merge pull request #9 from femme-squad-plus-one/user-auth
+| |\  
+| | * 0c92a1a (origin/user-auth) Edited events.js so that user auth loads when home page renders
+| | * c01db63 Adds user authentication code
+| | * 69bb0d2 Adds user authentication code
+| |/  
+| *   ecd11c6 Merge pull request #4 from femme-squad-plus-one/add-item-view
+| |\  
+| | * 7d4fd1b (origin/add-item-view) Retrieves a refreshed list of uploads after post request
+| | * 70b406b Adds code to allow user to upload a file
+| | * 188c399 Refactors code to have events.js set up the page listeners
+| | * 352efbe Added form fields to add-item-view
+| | * 5abc5f0 Added the add-item-view page
+| |/  
+| *   8402015 Merge pull request #7 from femme-squad-plus-one/list-view
+| |\  
+| | * 63e22ed (origin/list-view) Adds display uploads functionality from database
+| | * 26eee04 Add functionality to call backend
+| | * b69d543 Adds html to display the list view of uploads
+| | * a181783 Adds home page handlebars structure
+| | * d76d8ad Updates all references of 'landing page' to 'home page'
+| | * 7c1bb9b Adds skeleton functions to support template building
+| | * 0c3eb6f Adds file structure
+| |/  
+|/|   
+| *   52b1b68 Merge pull request #1 from femme-squad-plus-one/update-config
+| |\  
+|/ /  
+| * 26d9c14 (origin/update-config) Updates Heroku URL in config file
+| * f9d8198 Updates config to Heroku
+|/  
+* 1f41f64 Initial commit
