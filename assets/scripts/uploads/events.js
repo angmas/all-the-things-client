@@ -130,7 +130,6 @@ const onShowLandingPage = function () {
   console.log('onShowLandingPage')
   uploadUi.showLandingPage()
   addLandingPageHandlers()
-
 }
 
 const addLandingPageHandlers = function () {
