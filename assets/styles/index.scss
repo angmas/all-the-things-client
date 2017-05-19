@@ -4,7 +4,6 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import 'typography';
 @import 'colors';
 @import 'list';
-$blue: #1010df;
 
 body {
   // background-image: url('http://i.imgur.com/0fJCiL7.jpg');
@@ -21,9 +20,15 @@ body {
   font-size: 48px;
 }
 
+.navbar {
+  margin: 0 auto;
+  // max-width: 1000px;
+  // min-width: 85%;
+}
+
 .navbar-header .navbar-brand {
   color: $blue;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 24px;
   vertical-align: bottom;
 }
@@ -54,7 +59,7 @@ body {
 
 .add-upload {
   float: right;
-  margin-top: 1em;
+  margin-top: 3em;
   margin-right: 3em;
 }
 
