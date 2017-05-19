@@ -1,7 +1,7 @@
 # All The Things Client
 All The Things Client is the front end for the All The Things application. This application allows individuals to upload their files and share them with others in the All The Things community in a secure environment.
 
-Individuals must sign up in order to be part of the All The Things ommunity. All The Things members may download and view all uploaded files. Only file owners may update or delete their files.
+Individuals must sign up in order to be part of the All The Things community. All The Things members may download and view all uploaded files. Only file owners may update or delete their files.
 
 # Femme Squad Plus One Developers
 * Nari Savanorke-Joyce
