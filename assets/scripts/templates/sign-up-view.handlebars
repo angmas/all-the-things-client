@@ -1,16 +1,43 @@
-<!-- SIGN UP FORM -->
-<div class="jumbotron" id="sign-up-jumbotron">
-  <h1 class="big-headers">all the things</h1>
-  <form id="sign-up" class="auth-login-form">
-    <fieldset>
-      <div class="input-group center-block">
-        <input type="text" name="credentials[email]" value="" placeholder="email" id="sign-up-email" class="form-control" required>
-        <input type="password" name="credentials[password]" value="" placeholder="password" id="sign-up-password" class="form-control" required>
-        <input type="password" name="credentials[password_confirmation]" value="" placeholder="confirm password" id="sign-up-confirm" class="form-control" required>
-        <input type="submit" name="submit" value="Sign Up!" class="btn btn-primary btn-md" id="sign-up-button">
-      </div>
+<form id="sign-up" class="auth-login-form">
+<fieldset>
+<div id="sign-up-modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+  	<div class="modal-content">
+    <div class="modal-header">
+        <h3>Sign up<span class="extra-title muted"></span></h3>
+    </div>
+    <div class="modal-body form-horizontal">
 
-      <div class="auth-responses" id="sign-up-response">&nbsp;</div>
-    </fieldset>
-  </form>
+        <div class="control-group">
+            <div class="controls">
+            <input type="text" name="credentials[email]" value="" placeholder="email" id="sign-up-email" class="form-control" required>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+              <input type="password" name="credentials[password]" value="" placeholder="password" id="sign-up-password" class="form-control" required>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+              <input type="password" name="credentials[password_confirmation]" value="" placeholder="confirm password" id="sign-up-confirm" class="form-control" required>
+            </div>
+        </div>
+    </div>
+        <div class = "alert-container">
+          <div class="alert alert-success acct-success-message">
+            <strong>Booya!</strong> You have created an account-now sign in!
+          </div>
+          <div class="alert alert-danger password-mismatch-message">
+            <strong>Opps!</strong> Something went wrong. Please try again.
+          </div>
+      </div>
+    <div class="modal-footer">
+        <button type = "button" class="btn cls-sign-up-modal" data-dismiss="modal" aria-hidden="true">Close</button>
+        <input type="submit" name="submit" value="Sign Up!" class="btn btn-primary btn-md" id="sign-up-button">
+    </div>
+  </div>
 </div>
+</div>
+</fieldset>
+</form>
