@@ -136,7 +136,7 @@ The team decided early on to use the common workflow of having a master and a de
 
 The following git workflow was followed:
 1. Checkout from dev branch
-2. Push from local to remove
+2. Push from local to remote
 3. Create pull request on git server into dev from feature branch
 4. Team reviews and approves pull request
 5. Team member merges to dev
