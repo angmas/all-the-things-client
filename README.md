@@ -126,7 +126,7 @@ As an owner, I want to:
 7. Know/see when my file was modified
 
 ## Wireframes
-[All The Things Wireframes](https://docs.google.com/presentation/d/1v__-Fl0g3-yYKhrk0qjQxei9ILzVg5HOtj_aT2rcP7A/edit?usp=sharing)
+[All The Things Wireframes](readme/All The Things Wire Frames.pptx)
 
 ## Planning
 [All The Things Daily Task Boards](https://docs.google.com/presentation/d/1ZinC_mRzicxH4_CNPhSjqzW2rxRGI5fuzDcquraJXtc/edit?usp=sharing)
@@ -157,4 +157,4 @@ The next day we tried getting the team to do merge/code reviews on a ad-hoc basi
 
 The strict adherence to the git workflow allowed the team to rollback code from production rather easily. One feature had caused an unexpected defect in production. Luckily, the root cause was identified as the last feature merged to the dev branch. To roll back that code, the team did a rollback of master by one commit, force pushed that change up to the server, did a rollback of dev by one commit (the latest feature branch), force pushed that change up to the server, and then created a new pull request into master from dev.
 
-[All The Things Git Graph](./git-output-master.txt)
+[All The Things Git Graph](all-the-things-client/readme/All The Things Wire Frames.pptx)
